@@ -28,6 +28,9 @@ public class study1127 {
 		
 		prs1.print(h);
 		prs1.print("hello");
+		
+		char b = '가';
+
 	}
 
 }
