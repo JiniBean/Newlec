@@ -1,5 +1,8 @@
 package com.newlecture.study;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Dart {
 	
 	
@@ -48,16 +51,38 @@ public class Dart {
 		Thread.sleep(1000);
 	}
 	
+	public int Throw() throws InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("타겟을 향해 던지세요!\n");
+		int target = sc.nextInt();
+		
+		System.out.println("\n쓔우우웅\n");
+		Thread.sleep(600);
+		return 0;
+	}
 	
+	public int Percent() {
+		Random ran = new Random();
+		int per;
+		per = ran.nextInt(100)+1;
+		
+		switch(per){
+		case (per <= 5 ){
+			per 
+		}
+		
+		
+	}
 	
 	int miss = 0;
 	int single = 1;
 	int douBle = 2;
-	int TRIPLE = 3;
+	int triple = 3;
 	
 	public int Triple(int target) {
 		System.out.println("WOW!! TRIPLE!!");
-		int score = target * TRIPLE;
+		int score = target * triple;
 		return score;
 	}
 		

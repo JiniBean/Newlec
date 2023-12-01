@@ -9,7 +9,6 @@ public class DartGame {
 		
 //    ----------- 변수선언 --------------------------
 		
-		int x;
 		int per;
 		int target;
 		int score = 0;
@@ -18,8 +17,7 @@ public class DartGame {
 		int thirdScore = 0;
 		int totalScore = 0;
 		
-		Scanner sc = new Scanner(System.in);
-		Random ran = new Random();
+		
 		Dart dar = new Dart();
 		
 	
@@ -33,21 +31,20 @@ public class DartGame {
 		
 //	    ---------- 3회 반복---------------------------
 		
-		for( x=1; x<4; x++ ) {
+		for( int i=0, x=1; i<=3; i++,x++ ) {
 			
-			System.out.println("타겟을 향해 던지세요!\n");
-			
-			target = sc.nextInt();
-			per = ran.nextInt(100)+1;
-			
-;
-			System.out.println("\n쓔우우웅\n");
-			Thread.sleep(600);
+			target = dar.Throw();
+			if( !(1<= target && target <= 20)) {
+				System.out.println("잘못 입력하셨습니다! 다시 입력해주세요");
+				x--;
+				continue;
+			}
 
 			
 			
 //	    --------- 타겟별 확률 ---------------------------
 			
+			per = ran.nextInt(100)+1;
 //			target = 20~15
 			if (15 <= target && target <= 20) {
 				

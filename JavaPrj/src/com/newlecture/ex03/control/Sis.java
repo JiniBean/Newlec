@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
-public class sis {
+public class Sis {
 
 	public static void main(String[] args) throws IOException {
 		int kor1, kor2, kor3;
