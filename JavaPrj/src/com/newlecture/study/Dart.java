@@ -4,8 +4,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Dart {
-	
-	
+
+	final int MISS = 0;
+	final int SINGLE = 1;
+	final int DOUBLE = 2;
+	final int TRIPLE = 3;
+	// 👍👍
 	
 	public void dartArt() {
 		
@@ -68,39 +72,35 @@ public class Dart {
 		per = ran.nextInt(100)+1;
 		
 		switch(per){
-		case (per <= 5 ){
-			per 
+//		case (per <= 5 ){
+//			per 
 		}
 		
-		
+		return 0;		
 	}
 	
-	int miss = 0;
-	int single = 1;
-	int douBle = 2;
-	int triple = 3;
 	
 	public int Triple(int target) {
 		System.out.println("WOW!! TRIPLE!!");
-		int score = target * triple;
+		int score = target * TRIPLE;
 		return score;
 	}
 		
 	public int Double(int target) {
 		System.out.println("GOOD!! DOUBLE!!");
-		int score = target * douBle;
+		int score = target * DOUBLE;
 		return score;
 	}
 		
 	public int Single(int target) {
 		System.out.println("SINGLE!!");
-		int score = target * single;
+		int score = target * SINGLE;
 		return score;
 	}
 	
 	public int Miss(int target) {
 		System.out.println("OH NOOO, MISS!!");
-		int score = target * miss;
+		int score = target * MISS;
 		return score;
 	}
 		
