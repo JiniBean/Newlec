@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Dart {
 
-	final int MISS = 0;
-	final int SINGLE = 1;
-	final int DOUBLE = 2;
-	final int TRIPLE = 3;
+	private final int MISS = 0;
+	private final int SINGLE = 1;
+	private final int DOUBLE = 2;
+	private final int TRIPLE = 3;
 	// 👍👍
 	
 	public void dartArt() {
@@ -55,28 +55,37 @@ public class Dart {
 		Thread.sleep(1000);
 	}
 	
-	public int Throw() throws InterruptedException {
+	public int Throw() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("타겟을 향해 던지세요!\n");
 		int target = sc.nextInt();
+		return target;
 		
-		System.out.println("\n쓔우우웅\n");
-		Thread.sleep(600);
-		return 0;
 	}
 	
 	public int Percent() {
 		Random ran = new Random();
 		int per;
-		per = ran.nextInt(100)+1;
+		int num;
 		
-		switch(per){
-//		case (per <= 5 ){
-//			per 
+		num = ran.nextInt(100)+1;
+		
+		if(num <= 5) {
+			per = 5;
 		}
+		else if (num <= 15) {
+			per = 10;
+		}
+		else if (num <= 50) {
+			per = 35;
+		}
+		else {
+			per = 50;
+		}
+		return 0;
 		
-		return 0;		
+			
 	}
 	
 	
