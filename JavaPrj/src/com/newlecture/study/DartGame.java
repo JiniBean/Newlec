@@ -24,9 +24,9 @@ public class DartGame {
     
 //        ----------- 인트로 ---------------------------
 //        
-//        dar.dartArt1();
-//        dar.intro();
-//        dar.dartArt();
+        dar.dartArt1();
+        dar.intro();
+        dar.dartArt();
         
         
         
