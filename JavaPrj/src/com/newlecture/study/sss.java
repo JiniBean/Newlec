@@ -3,7 +3,7 @@ package com.newlecture.study;
 public class sss {
 	public static void main(String[] args) {
 
-		int target = 20;
+		int target = 30;
 
 		int perHitTriple = (100 - (target * 3));
 		int perHitDouble = (100 - (target * 2));
