@@ -1,4 +1,4 @@
-package com.newlecture.study;
+package com.newlecture.study.scenario;
 
 public class sss {
 	public static void main(String[] args) {

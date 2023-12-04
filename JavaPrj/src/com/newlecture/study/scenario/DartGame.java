@@ -11,11 +11,9 @@ public class DartGame {
         
         int per;
         int target;
-        int score = 0;
-        int firstScore = 0;
-        int secondScore = 0;
-        int thirdScore = 0;
-        int totalScore = 0;
+        int score=0;
+        int totalScore=0;
+        int n = 3;
         
         Scanner sc = new Scanner(System.in);
         Random ran = new Random();
@@ -31,15 +29,16 @@ public class DartGame {
         
         
 //        ---------- 3회 반복---------------------------
+        int[] roundScore = new int[n];
         
-        for( int i=0, x=1; i<3 ; i++, x++ ) {
+        for( int i=0, x=1; i<n ; i++, x++ ) {
             
            target = dar.Throw();
             
-            /*거르기*/
+            /*유효성 검사*/
             if( !( 1 <= target && target <= 20 ) ) {
             	
-            	System.out.println("잘못 입력하셨습니다! 다시 입력해주세요");
+            	System.out.println("잘못 입력하셨습니다! 다시 입력해주세요\n");
             	i--;
             	x--;
             	continue;
@@ -48,22 +47,10 @@ public class DartGame {
             System.out.println("\n쓔우우웅\n");
     		Thread.sleep(600);
     		
+    		per = dar.Percent();
     		
-    		int num;
-    		
-    		num = ran.nextInt(100)+1;
-    		
-    		if (num <= 5) 
-    			per = 5;
-    		else if (num <= 15) 
-    			per = 10;
-    		else if (num <= 50) 
-    			per = 35;
-    		else 
-    			per = 50;
-    		
-    		System.out.println("current random number is... " + num);
-    		System.out.println("ratio is... " + per);
+//    		System.out.println("current random number is... " + num);
+//    		System.out.println("ratio is... " + per);
             
             if(target < 10) {
             	switch (per) {
@@ -128,23 +115,19 @@ public class DartGame {
             
           
 //            각 라운드 별 점수 출력 및 저장
+            
             System.out.println("Round" + x + ". your score = " + score );
             System.out.println();
             
-            if (x==1) {
-                firstScore = score;
-                
-            } else if (x==2) {
-                secondScore = score;
-                
-            } else if(x==3) {
-                thirdScore = score;
-            }
+            roundScore[i] = score;
+            
         }
         
         
 //        -------반복 끝, 총 점수 출력  ------------------------
-        totalScore = firstScore + secondScore + thirdScore;
+
+        for(int i=0; i<n; i++)
+        	totalScore += roundScore[i];
         
         System.out.println("계산 중...");
         Thread.sleep(1200);

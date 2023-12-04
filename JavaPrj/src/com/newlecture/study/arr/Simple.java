@@ -4,7 +4,7 @@ public class Simple {
 
 	public static void main(String[] args) {
 		
-//		int[] numberList = new int[10];
+		int[] numberList = new int[10];
 //		
 //		System.out.println(numberList[2]);
 //		

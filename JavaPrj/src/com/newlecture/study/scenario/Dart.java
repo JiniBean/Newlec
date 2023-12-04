@@ -13,9 +13,9 @@ public class Dart {
 	
 	public void dartArt() {
 		
-		System.out.println("                         ___     ");      
-		System.out.println("                       /\\ _ /\\   ");     
-		System.out.println("   >>>----            / /\\ /\\ \\  ");   
+		System.out.println("                          ___     ");      
+		System.out.println("          쓔우웅~!!    /\\ _ /\\   ");     
+		System.out.println("    >>>----           / /\\ /\\ \\  ");   
 		System.out.println(" >>>----             |---(*)---| ");     
 		System.out.println("                      \\ \\/_\\/ /  ");      
 		System.out.println("          >>>----      \\/___\\/   ");    
@@ -45,11 +45,11 @@ public class Dart {
 		Thread.sleep(900);
 		System.out.println("당신에게는 3개의 다트핀이 주어집니다.\n");
 		Thread.sleep(1000);
-		System.out.println("다트보드에는 1부터 20의 숫자가 있고 각각 싱글존, 더블존, 트리플존, 미스존이 있습니다.\n");
+		System.out.println("다트보드에는 20부터 1까지의 타겟존이 있고\n각각 싱글존, 더블존, 트리플존, 미스존이 있습니다.\n");
 		Thread.sleep(1000);
-		System.out.println("미스나면 0점, 더블존을 맞추면 두배, 트리플존을 맞추면 세배의 점수를 가져갑니다\n");
+		System.out.println("미스나면 0점, 더블존은 x2, 트리플존 x3의 점수를 가져갑니다\n");
 		Thread.sleep(1000);
-		System.out.println("타겟이 좋을 수록 맞추기도 어려워지겠죠?? 미스나지 않게 조심하세요!!\n\n");
+		System.out.println("타겟이 좋을 수록 맞추기도 어려워지겠죠??\n미스나지 않게 조심하세요!!\n\n");
 		Thread.sleep(1000);
 		System.out.println("자, 그럼 시작합니다~~!");
 		Thread.sleep(1000);
@@ -58,7 +58,7 @@ public class Dart {
 	public int Throw() {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("타겟을 향해 던지세요!\n");
+		System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
 		int target = sc.nextInt();
 		return target;
 		
@@ -71,19 +71,15 @@ public class Dart {
 		
 		num = ran.nextInt(100)+1;
 		
-		if(num <= 5) {
+		if(num <= 5)
 			per = 5;
-		}
-		else if (num <= 15) {
+		else if (num <= 15) 
 			per = 10;
-		}
-		else if (num <= 50) {
+		else if (num <= 50) 
 			per = 35;
-		}
-		else {
+		else 
 			per = 50;
-		}
-		return 0;
+		return per;
 		
 			
 	}
