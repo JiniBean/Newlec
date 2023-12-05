@@ -85,6 +85,7 @@ public class Dart {
 	}
 	
 	
+	
 	public int Triple(int target) {
 		System.out.println("WOW!! TRIPLE!!");
 		int score = target * TRIPLE;
