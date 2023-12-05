@@ -16,7 +16,6 @@ public class DartGame {
         int n = 3;
         
         Scanner sc = new Scanner(System.in);
-        Random ran = new Random();
         Dart dar = new Dart();
         
     
@@ -31,7 +30,7 @@ public class DartGame {
 //        ---------- 3회 반복---------------------------
         int[] roundScore = new int[n];
         
-        for( int i=0, x=1; i<n ; i++, x++ ) {
+        for( int i=0, j=1; i<n ; i++, j++ ) {
             
            target = dar.Throw();
             
@@ -40,56 +39,15 @@ public class DartGame {
             	
             	System.out.println("잘못 입력하셨습니다! 다시 입력해주세요\n");
             	i--;
-            	x--;
+            	j--;
             	continue;
             }
             
             System.out.println("\n쓔우우웅\n\n");
 			Thread.sleep(600);
 			
-			
-			int perHitTriple=40;
-			int perHitDouble=40;
-			int perHitSingle=20;
+			dar.Percent(target);
 
-			
-			int a;
-			int y;
-			int z;
-			
-			if(target>15) {
-				perHitTriple /=2;
-				perHitSingle /=2;
-			}
-			else if(target>10) 
-				perHitDouble /=2;
-			
-				
-			x=100-perHitTriple;
-			y=(x-1)-perHitDouble;
-			z=(y-1)-perHitSingle;
-			
-			
-			switch(per) {
-			case(100 <= per && per <=x) :{
-				score = dar.Triple(target);
-				break;
-			}
-			case(x< per && per <=y):{
-				score = dar.Double(target);
-				break;
-			}
-			case(y< per && per <=z):{
-				score = dar.Single(target);
-				break;
-			}
-    		default:{
-				score = dar.Miss(target);
-				break;
-    			
-    		}
-    		
-//    		per = dar.Percent();
 //    		
 ////    		System.out.println("current random number is... " + num);
 ////    		System.out.println("ratio is... " + per);
@@ -158,7 +116,7 @@ public class DartGame {
           
 //            각 라운드 별 점수 출력 및 저장
             
-            System.out.println("Round" + x + ". your score = " + score );
+            System.out.println("Round" + j + ". your score = " + score );
             System.out.println();
             
             roundScore[i] = score;

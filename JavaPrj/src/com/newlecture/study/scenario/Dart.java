@@ -64,48 +64,67 @@ public class Dart {
 		
 	}
 	
-	public int Percent() {
+	public int Percent(int target) {
+		
 		Random ran = new Random();
-		int per;
-		int num;
+		int per = ran.nextInt(100)+1;
 		
-		num = ran.nextInt(100)+1;
+		int perHitTriple=40;
+		int perHitDouble=40;
+		int perHitSingle=20;
 		
-		if(num <= 5)
-			per = 5;
-		else if (num <= 15) 
-			per = 10;
-		else if (num <= 50) 
-			per = 35;
-		else 
-			per = 50;
-		return per;
+		int score;
+		int x;
+		int y;
+		int z;
+		
+		if(target>15) {
+			perHitTriple /=2;
+			perHitDouble /=2;
+		}
+		else if(target>10) 
+			perHitDouble /=2;
 		
 			
+		x=100-perHitTriple;
+		y=(x-1)-perHitDouble;
+		z=(y-1)-perHitSingle;
+		
+		if(100 >= per && per >=x)
+			score = Triple(target);
+		else if(x> per && per >=y)
+			score = Double(target);
+		else if(y> per && per >=z)
+			score = Single(target);
+		else
+			score = Miss(target);
+		
+		return score;
+				
 	}
 	
 	
 	
 	public int Triple(int target) {
-		System.out.println("WOW!! TRIPLE!!");
+		System.out.println("WOW!! TRIPLE!!\n");
 		int score = target * TRIPLE;
 		return score;
 	}
 		
 	public int Double(int target) {
-		System.out.println("GOOD!! DOUBLE!!");
+		System.out.println("GOOD!! DOUBLE!!\n");
 		int score = target * DOUBLE;
 		return score;
 	}
 		
 	public int Single(int target) {
-		System.out.println("SINGLE!!");
+		System.out.println("SINGLE!!\n");
 		int score = target * SINGLE;
 		return score;
 	}
 	
 	public int Miss(int target) {
-		System.out.println("OH NOOO, MISS!!");
+		System.out.println("OH NOOO, MISS!!\n");
 		int score = target * MISS;
 		return score;
 	}
