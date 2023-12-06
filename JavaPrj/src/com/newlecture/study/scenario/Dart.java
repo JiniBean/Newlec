@@ -11,7 +11,81 @@ public class Dart {
 	private final int TRIPLE = 3;
 	// 👍👍
 	
+		
 	public void dartArt() {
+		System.out.println();
+		System.out.println("                                                                                                                                                                           ");
+		System.out.println("   DDDDDDDDDDDDD                                                     tttt                       GGGGGGGGGGGGG                                                              ");
+		System.out.println("   D::::::::::::DDD                                               ttt:::t                    GGG::::::::::::G                                                              ");
+		System.out.println("   D:::::::::::::::DD                                             t:::::t                  GG:::::::::::::::G                                                              ");
+		System.out.println("   DDD:::::DDDDD:::::D                                            t:::::t                 G:::::GGGGGGGG::::G                                                              ");
+		System.out.println("     D:::::D    D:::::D  aaaaaaaaaaaaa  rrrrr   rrrrrrrrr   ttttttt:::::ttttttt          G:::::G       GGGGGG  aaaaaaaaaaaaa      mmmmmmm    mmmmmmm       eeeeeeeeeeee    ");
+		System.out.println("     D:::::D     D:::::D a::::::::::::a r::::rrr:::::::::r  t:::::::::::::::::t         G:::::G                a::::::::::::a   mm:::::::m  m:::::::mm   ee::::::::::::ee  ");
+		System.out.println("     D:::::D     D:::::D aaaaaaaaa:::::ar:::::::::::::::::r t:::::::::::::::::t         G:::::G                aaaaaaaaa:::::a m::::::::::mm::::::::::m e::::::eeeee:::::ee");
+		System.out.println("     D:::::D     D:::::D          a::::arr::::::rrrrr::::::rtttttt:::::::tttttt         G:::::G    GGGGGGGGGG           a::::a m::::::::::::::::::::::me::::::e     e:::::e");
+		System.out.println("     D:::::D     D:::::D   aaaaaaa:::::a r:::::r     r:::::r      t:::::t               G:::::G    G::::::::G    aaaaaaa:::::a m:::::mmm::::::mmm:::::me:::::::eeeee::::::e");
+		System.out.println("     D:::::D     D:::::D aa::::::::::::a r:::::r     rrrrrrr      t:::::t               G:::::G    GGGGG::::G  aa::::::::::::a m::::m   m::::m   m::::me:::::::::::::::::e ");
+		System.out.println("     D:::::D     D:::::Da::::aaaa::::::a r:::::r                  t:::::t               G:::::G        G::::G a::::aaaa::::::a m::::m   m::::m   m::::me::::::eeeeeeeeeee  ");
+		System.out.println("     D:::::D    D:::::Da::::a    a:::::a r:::::r                  t:::::t    tttttt      G:::::G       G::::Ga::::a    a:::::a m::::m   m::::m   m::::me:::::::e           ");
+		System.out.println("   DDD:::::DDDDD:::::D a::::a    a:::::a r:::::r                  t::::::tttt:::::t       G:::::GGGGGGGG::::Ga::::a    a:::::a m::::m   m::::m   m::::me::::::::e          ");
+		System.out.println("   D:::::::::::::::DD  a:::::aaaa::::::a r:::::r                  tt::::::::::::::t        GG:::::::::::::::Ga:::::aaaa::::::a m::::m   m::::m   m::::m e::::::::eeeeeeee  ");
+		System.out.println("   D::::::::::::DDD     a::::::::::aa:::ar:::::r                    tt:::::::::::tt          GGG::::::GGG:::G a::::::::::aa:::am::::m   m::::m   m::::m  ee:::::::::::::e  ");
+		System.out.println("   DDDDDDDDDDDDD         aaaaaaaaaa  aaaarrrrrrr                      ttttttttttt               GGGGGG   GGGG  aaaaaaaaaa  aaaammmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee  ");
+		System.out.println("                                                                                                                                                                           ");
+		System.out.println();
+		System.out.println();
+
+		System.out.println();
+		System.out.println("             ,-'\"\"\"`-,    ,-----.      \r\n"
+				+ "           ,' \\ _|_ / `.  | 501 |                           _  \\|/\r\n"
+				+ "          /`.,'\\ | /`.,'\\ `-----'  |                  -c/,=<<  ) \\\r\n"
+				+ "         (  /`. \\|/ ,'\\  )      |  H                   ( /    < ) |\r\n"
+				+ "         |--|--;=@=:--|--|   |  H  U                   //    \"(  _/\r\n"
+				+ "         (  \\,' /|\\ `./  )   H  U  |                  //_,___,/-' `\\_\r\n"
+				+ "          \\,'`./ | \\,'`./    U  | (|)                 (___|       me \\`\\\r\n"
+				+ "           `. / \"\"\" \\ ,'     | (|)                        '--)        \\--\r\n"
+				+ "             '-._|_,-`      (|)                              (         ) \\\r\n"
+				+ "                                                              \\=(===)==/\\ \\\r\n"
+				+ "                                                              |        >>(8\\=\r\n"
+				+ "                                                              |    ,    \\ \"\"\r\n"
+				+ "                                                              |   / \\    \\\r\n"
+				+ "                                                              |  /   \\    \\\r\n"
+				+ "                                                              |  \\    \\    \\\r\n"
+				+ "                                                              |___\\    \\____\\\r\n"
+				+ "                                                               ( )         ( )  ");
+	}
+	
+	
+	
+	public void intro() throws InterruptedException {
+		
+		Thread.sleep(900);
+		System.out.println("당신에게는 3개의 다트핀이 주어집니다.\n");
+		Thread.sleep(1000);
+		System.out.println("다트보드에는 20부터 1까지의 타겟존이 있고\n\n각각 싱글존, 더블존, 트리플존, 미스존이 있습니다.\n");
+		Thread.sleep(1000);
+		System.out.println("미스나면 0점, 더블존은 x2, 트리플존 x3의 점수를 가져갑니다\n");
+		Thread.sleep(1000);
+		System.out.println("타겟이 좋을 수록 맞추기도 어려워지겠죠??\n\n미스나지 않게 조심하세요!!\n\n");
+		Thread.sleep(1000);
+		System.out.println("자, 그럼 시작합니다~~!\n");
+		Thread.sleep(1000);
+	}
+	
+	public int throwDart() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
+		System.out.print(">>");
+		int target = sc.nextInt();
+		System.out.println("\n\n");
+		return target;
+		
+	}
+	
+	
+	public void throwAffect() throws InterruptedException {
 		
 		System.out.println("                          ___     ");      
 		System.out.println("          쓔우웅~!!    /\\ _ /\\   ");     
@@ -20,51 +94,37 @@ public class Dart {
 		System.out.println("                      \\ \\/_\\/ /  ");      
 		System.out.println("          >>>----      \\/___\\/   ");    
 		System.out.println("                                 ");
-		
-	}
-		
-	public void dartArt1() {
-
-		System.out.println("                                                                     ");
-		System.out.println("    /M\\\\M|||M//.                                                    ");
-		System.out.println("   /MMM\\\\|||///M:.                                                  "); 
-		System.out.println("  /MMMMM\\ | //MMMM:.                                                ");
-		System.out.println(" (=========+======<]]]]::::::::::<|||_|||_|||_|||_|||_|||>=========- ");
-		System.out.println("  \\#MMMM// | \\MMMM:'                                                ");     
-		System.out.println("   \\#MM///|||\\\\M:'                                                  ");
-		System.out.println("    \\M///M|||M\\\'                                                    "); 
-		System.out.println("                                                                     ");    
-		   
+		System.out.println();
+		Thread.sleep(600);
 	}
 	
 	
-	public void intro() throws InterruptedException {
-		
-		Thread.sleep(900);
-		System.out.println("재밌는 다트 게임!!\n");
-		Thread.sleep(900);
-		System.out.println("당신에게는 3개의 다트핀이 주어집니다.\n");
-		Thread.sleep(1000);
-		System.out.println("다트보드에는 20부터 1까지의 타겟존이 있고\n각각 싱글존, 더블존, 트리플존, 미스존이 있습니다.\n");
-		Thread.sleep(1000);
-		System.out.println("미스나면 0점, 더블존은 x2, 트리플존 x3의 점수를 가져갑니다\n");
-		Thread.sleep(1000);
-		System.out.println("타겟이 좋을 수록 맞추기도 어려워지겠죠??\n미스나지 않게 조심하세요!!\n\n");
-		Thread.sleep(1000);
-		System.out.println("자, 그럼 시작합니다~~!");
-		Thread.sleep(1000);
+	public int hitTriple(int target) {
+		System.out.println("WOW!! TRIPLE!!\n");
+		int score = target * TRIPLE;
+		return score;
 	}
 	
-	public int Throw() {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
-		int target = sc.nextInt();
-		return target;
-		
+	public int hitDouble(int target) {
+		System.out.println("GOOD!! DOUBLE!!\n");
+		int score = target * DOUBLE;
+		return score;
 	}
 	
-	public int Percent(int target) {
+	public int hitSingle(int target) {
+		System.out.println("SINGLE!!\n");
+		int score = target * SINGLE;
+		return score;
+	}
+	
+	public int hitMiss(int target) {
+		System.out.println("OH NOOO, MISS!!\n");
+		int score = target * MISS;
+		return score;
+	}
+	
+	
+	public int scoreCheck(int target) {
 		
 		Random ran = new Random();
 		int per = ran.nextInt(100)+1;
@@ -91,44 +151,18 @@ public class Dart {
 		z=(y-1)-perHitSingle;
 		
 		if(100 >= per && per >=x)
-			score = Triple(target);
+			score = hitTriple(target);
 		else if(x> per && per >=y)
-			score = Double(target);
+			score = hitDouble(target);
 		else if(y> per && per >=z)
-			score = Single(target);
+			score = hitSingle(target);
 		else
-			score = Miss(target);
+			score = hitMiss(target);
+		
 		
 		return score;
 				
 	}
 	
-	
-	
-	public int Triple(int target) {
-		System.out.println("WOW!! TRIPLE!!\n");
-		int score = target * TRIPLE;
-		return score;
-	}
-		
-	public int Double(int target) {
-		System.out.println("GOOD!! DOUBLE!!\n");
-		int score = target * DOUBLE;
-		return score;
-	}
-		
-	public int Single(int target) {
-		System.out.println("SINGLE!!\n");
-		int score = target * SINGLE;
-		return score;
-	}
-	
-	public int Miss(int target) {
-		System.out.println("OH NOOO, MISS!!\n");
-		int score = target * MISS;
-		return score;
-	}
-		
-		
-        
+
 }
