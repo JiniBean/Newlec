@@ -80,16 +80,52 @@ public class ExamBufApp {
 		double avgAvg = avgAdd/(double)count;
 		
 //		-----------------------------------------------------------------
-		// 위 데이터 출력하기
+//		// 학생 성적 바꾸기
+//		int t;
+//		
+//		t = kors[0];
+//		kors[0] = kors[1];
+//		kors[1] = t;
+//		
+//		//국어랑 영어 이름 바꾸기
+//		int[] temp;
+//		
+//		temp = kors;
+//		kors = engs;
+//		engs = temp;
 		
-		{
-			//학생별 성적 출력
-			for(int i=0; i<count; i++)
-				System.out.printf("\nname = %s, kor = %d, math = %d, eng = %d, total = %d, avg = %.2f\n", names[i], kors[i], maths[i], engs[i], totals[i], avgs[i]);
+		// kors 출력
+		for(int i=0; i<count; i++)
+			System.out.printf("%d, ",kors[i]);
+		System.out.println();
+		
+		
+		for(int i=0; i<count-1; i++)
+			for(int j=0; j<count-1-i; j++)  
+				if(kors[j]>kors[j+1]) {
+					int temp = kors[j];
+					kors[j] = kors[j+1];
+					kors[j+1] = temp;
+				}
 			
-			// 총 결산 출력
-			System.out.printf("\n인원수 : %d, 국어 : %d/%d, 수학 : %d/%d, 영어 : %d/%d, 총합 : %d, 총 평균 : %.1f", count, korSum, korAvg, mathSum, mathAvg, engSum, engAvg, total, avgAvg);
-		}
+		
+		
+		// kors 출력
+		for(int i=0; i<count; i++)
+			System.out.printf("%d, ",kors[i]);
+
+		
+//		-----------------------------------------------------------------
+//		// 위 데이터 출력하기
+//		
+//		{
+//			//학생별 성적 출력
+//			for(int i=0; i<count; i++)
+//				System.out.printf("\nname = %s, kor = %d, math = %d, eng = %d, total = %d, avg = %.2f\n", names[i], kors[i], maths[i], engs[i], totals[i], avgs[i]);
+//			
+//			// 총 결산 출력
+//			System.out.printf("\n인원수 : %d, 국어 : %d/%d, 수학 : %d/%d, 영어 : %d/%d, 총합 : %d, 총 평균 : %.1f", count, korSum, korAvg, mathSum, mathAvg, engSum, engAvg, total, avgAvg);
+//		}
 		
 	}
 }

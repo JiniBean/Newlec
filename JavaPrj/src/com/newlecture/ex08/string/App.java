@@ -35,6 +35,10 @@ public class App {
 		
 		System.out.println("abcdef".charAt(0));
 
+		int[] arr = {0,1};
+		int a = 0;
+		
+		System.out.println(arr[0]==a);
 		
 		
 	}
