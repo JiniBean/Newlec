@@ -72,16 +72,49 @@ public class Dart {
 		Thread.sleep(1000);
 	}
 	
+	public int howMuchPlayers(){
+		int str = 0;
+		int num = 0;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("플레이어 수를 정해주세요");
+		System.out.print(">>");
+		
+		try {
+			str = sc.nextInt();
+		} catch (Exception e) {
+			System.out.println("숫자만 입력헤주세요\n");
+		}
+		num = str;
+		return num;
+	}
+	
+	public String[] whatIsName() {
+		int num = howMuchPlayers();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String[] str = new String[num];
+		for(int i=0; i<3; i++) {
+			System.out.println("이름을 입력해주세요.");
+			str[i] = sc.nextLine();
+		}
+		return str;
+	}
+	
 	public int throwDart() {
 		
 		int str = 0;
 		int target = 0;
+		
 		Scanner sc = new Scanner(System.in);
 
 		boolean bool = true;
 		while (bool) {
-
-			System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
+			
+//			System.out.printf("Player%d\n", p);
+			System.out.println(""
+					+ "타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
 			System.out.print(">>");
 
 			try {
@@ -177,5 +210,18 @@ public class Dart {
 				
 	}
 	
-
+	public boolean repeatGame() {
+		boolean isRun = true;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("\n재도전 하시겠습니까? (게임을 종료하시려면 1을, 다시 시작하시려면 아무 키나 눌러주세요");
+		
+		String refuse = scan.nextLine();
+		if(refuse.equals("1")) {
+			isRun = false;
+			System.out.println("게임이 종료되었습니다.");
+		}
+		
+		return isRun;
+	}
 }
