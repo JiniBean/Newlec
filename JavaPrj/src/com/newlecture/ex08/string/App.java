@@ -34,8 +34,7 @@ public class App {
 		System.out.println(m);
 		
 		System.out.println("abcdef".charAt(0));
-		m="안녕하세요";
-		System.out.println(m.valueOf("안"));
+
 		
 		
 	}

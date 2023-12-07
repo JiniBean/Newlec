@@ -44,7 +44,6 @@ public class ExamBufApp {
 				fscan.nextLine();
 
 			//배열에 성적 입력하기
-			
 			for(int i=0; i<count; i++) {
 				String line = fscan.nextLine();
 				String[] tokens = line.split(",");
@@ -75,7 +74,6 @@ public class ExamBufApp {
 		}
 		
 		// 과목별 합계 평균
-		
 		int korAvg = korSum/count;
 		int mathAvg = mathSum/count;
 		int engAvg = engSum/count;

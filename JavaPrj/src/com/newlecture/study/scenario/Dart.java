@@ -74,14 +74,29 @@ public class Dart {
 	
 	public int throwDart() {
 		
+		int str = 0;
+		int target = 0;
 		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
-		System.out.print(">>");
-		int target = sc.nextInt();
+
+		boolean bool = true;
+		while (bool) {
+
+			System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
+			System.out.print(">>");
+
+			try {
+				str = sc.nextInt();
+
+			} catch (Exception e) {
+				target = -1;
+			}
+			if(target>-1)
+				target = str;
+			
+			bool=false;
+		}		
 		System.out.println("\n\n");
 		return target;
-		
 	}
 	
 	
@@ -145,7 +160,6 @@ public class Dart {
 		else if(target>10) 
 			perHitDouble /=2;
 		
-			
 		x=100-perHitTriple;
 		y=(x-1)-perHitDouble;
 		z=(y-1)-perHitSingle;
@@ -158,7 +172,6 @@ public class Dart {
 			score = hitSingle(target);
 		else
 			score = hitMiss(target);
-		
 		
 		return score;
 				
