@@ -72,34 +72,42 @@ public class Dart {
 		Thread.sleep(1000);
 	}
 	
-	public int howMuchPlayers(){
+
+	public String[][] setting() {
+		
 		int str = 0;
 		int num = 0;
+		int n = 3;
 		Scanner sc = new Scanner(System.in);
 		
+		boolean run = true;
+		
+		while(run) {
+			
 		System.out.println("플레이어 수를 정해주세요");
 		System.out.print(">>");
 		
 		try {
-			str = sc.nextInt();
+			str = Integer.parseInt(sc.nextLine());
 		} catch (Exception e) {
-			System.out.println("숫자만 입력헤주세요\n");
+			System.out.println("0 이상의 정수만 입력헤주세요\n");
+			str = -1;
 		}
+		if(str>0)
+			run = false;
+		}
+		
 		num = str;
-		return num;
-	}
-	
-	public String[] whatIsName() {
-		int num = howMuchPlayers();
 		
-		Scanner sc = new Scanner(System.in);
-		
-		String[] str = new String[num];
-		for(int i=0; i<3; i++) {
-			System.out.println("이름을 입력해주세요.");
-			str[i] = sc.nextLine();
+		String[][] players = new String[num][n+2];
+		for(int i=0; i<num; i++) {
+			System.out.printf("\n유저%d의 이름을 정해주세요.\n", i+1);
+			System.out.print(">>");
+			players[i][0] = sc.nextLine();
+			System.out.println();
 		}
-		return str;
+		
+		return players;
 	}
 	
 	public int throwDart() {
@@ -112,9 +120,7 @@ public class Dart {
 		boolean bool = true;
 		while (bool) {
 			
-//			System.out.printf("Player%d\n", p);
-			System.out.println(""
-					+ "타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
+			System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
 			System.out.print(">>");
 
 			try {
@@ -143,7 +149,7 @@ public class Dart {
 		System.out.println("          >>>----      \\/___\\/   ");    
 		System.out.println("                                 ");
 		System.out.println();
-		Thread.sleep(600);
+		Thread.sleep(500);
 	}
 	
 	
