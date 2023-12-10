@@ -3,13 +3,10 @@ package personal;
 public class test {
 	public static void main(String[] args) {
 		
-switch (key) {
-case value:
-	
-	break;
-
-default:
-	break;
-}
-
+		for(int i=0; i<n-1; i++){
+			for(int j=0 ; j<5; j++) 
+				System.out.print("ㅁ");
+		System.out.println();
+		}
+	}
 }

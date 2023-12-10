@@ -62,11 +62,11 @@ public class Dart {
 		Thread.sleep(900);
 		System.out.println("당신에게는 3개의 다트핀이 주어집니다.\n");
 		Thread.sleep(1000);
-		System.out.println("다트보드에는 20부터 1까지의 타겟존이 있고\n\n각각 싱글존, 더블존, 트리플존, 미스존이 있습니다.\n");
+		System.out.println("다트보드에는 20부터 1까지의 타겟존이 있고\n\n각각 트리플존, 더블존, 싱글존, 미스존이 있습니다.\n");
 		Thread.sleep(1000);
-		System.out.println("미스나면 0점, 더블존은 x2, 트리플존 x3의 점수를 가져갑니다\n");
+		System.out.println("트리플존은 3배, 더블존은 2배, 미스존은 0점입니다\n");
 		Thread.sleep(1000);
-		System.out.println("타겟이 좋을 수록 맞추기도 어려워지겠죠??\n\n미스나지 않게 조심하세요!!\n\n");
+		System.out.println("높은 점수의 타겟을 노릴 수록 맞추기도 어려워지겠죠??\n\n미스나지 않게 조심하세요!!\n\n");
 		Thread.sleep(1000);
 		System.out.println("자, 그럼 시작합니다~~!\n");
 		Thread.sleep(1000);
@@ -214,6 +214,46 @@ public class Dart {
 		
 		return score;
 				
+	}
+	
+	public String[][] scoreCalculate(String[][] players) {
+		int n = players[0].length-2;
+		int num = players.length;
+		
+		for(int p=0; p<num; p++)
+			System.out.printf("%s : %s점  \n\n", players[p][0], players[p][n+1]);
+		
+		if(num==2) {
+			
+			boolean same = Integer.parseInt(players[0][n+1])==Integer.parseInt(players[1][n+1]);
+			boolean whoWin = Integer.parseInt(players[0][n+1])>Integer.parseInt(players[1][n+1]);
+		
+			if(same)
+				System.out.println("MATCH Tied!");
+			else
+				System.out.printf(whoWin? "\n\n%s WIN!" : "\n\n%s WIN!" , players[0][0], players[1][0]);
+		}
+		else if(num>2) {
+			
+			String[][] rank = new String[1][players[0].length];
+			
+			for(int p=0; p<num-1; p++)
+				for(int i=0; i<num-(1+p); i++) {
+					
+					int player1 = Integer.parseInt(players[i][n+1]);
+					int player2 =Integer.parseInt(players[i+1][n+1]);
+					
+					if( player1 < player2 ) {
+						rank[0] = players[i];
+						players[i] = players[i+1];
+						players[i+1] = rank[0];
+					}
+				}
+			
+			for(int p=0, i=1; p<num; p++, i++)
+				System.out.printf("\n%d등 : %s\n", i, players[p][0]);
+		}
+		return players;
 	}
 	
 	public boolean repeatGame() {

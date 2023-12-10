@@ -26,9 +26,31 @@ public class DartGame {
 			int n = players[0].length-2; //라운드 횟수
 			
 			for(int i=0, j=1; i<n; i++,j++) {
-				for(int k=0, p=1 ; k<num; k++, p++) {
+				for(int k=0 ; k<num; k++) {
 					
 					//다트 던지기
+					System.out.println("      R1       R2       R3 ");
+					
+					for(int p=0 ; p<num; p++) {
+						if(i==0) {
+							System.out.println("   ┌───────┐┌───────┐┌───────┐");
+							System.out.printf("   │  %s  ││      ││      │\n", players[k][1]);
+							System.out.println("   └───────┘└───────┘└───────┘\n");
+						}
+						
+						else if(i==1) {
+							System.out.println("   ┌───────┐┌───────┐┌───────┐");
+							System.out.printf("   │  %s  ││  %s  ││      │\n", players[k][1], players[k][2]);
+							System.out.println("   └───────┘└───────┘└───────┘\n");
+						}
+						else {
+							System.out.println("   ┌──────┐┌──────┐┌──────┐");
+							System.out.printf("   │  %s  ││  %s  ││  %s  │\n", players[k][1], players[k][2], players[k][3]);
+							System.out.printf("   └───────┘└───────┘└───────┘\n");
+						}
+							
+					}
+					
 					System.out.printf("\nRound%d %s\n\n",j, players[k][0] );
 					target = dar.throwDart();
 					
@@ -36,7 +58,6 @@ public class DartGame {
 					if( !(1 <= target && target <=20) ) {
 						System.out.println("잘못 입력하셨습니다! 다시 던져주세요!\n");
 						k--;
-						p--;
 						continue;
 					}
 					dar.throwAffect();
@@ -47,60 +68,15 @@ public class DartGame {
 					System.out.printf("%s. your score = %d\n\n\n", players[k][0], score);
 					Thread.sleep(900);
 					players[k][j] = String.valueOf(score);
+					players[k][n+1] += String.valueOf(score);
 				}
 			}
 		
 //		--- 총 점수 출력 ----------------------------
-			
-			for(int p=0; p<num; p++) {
-				int temp = 0;
-				for(int i=0, j=1; i<n; i++,j++)
-					temp += Integer.parseInt(players[p][j]);
-				players[p][n+1] = String.valueOf(temp);
-			}
-			
 			System.out.println("계산 중...\n");
 			Thread.sleep(1100);
 			
-			for(int p=0; p<num; p++)
-				System.out.printf("%s : %s점  ", players[p][0], players[p][n+1]);
-			
-			if(num==2) {
-				
-				boolean same = Integer.parseInt(players[0][n+1])==Integer.parseInt(players[1][n+1]);
-				boolean whoWin = Integer.parseInt(players[0][n+1])>Integer.parseInt(players[1][n+1]);
-			
-				if(same)
-					System.out.println("MATCH Tied!");
-				else
-					System.out.printf(whoWin? "\n\n%s WIN!" : "\n\n%s WIN!" , players[0][0], players[1][0]);
-			}
-			else if(num>2) {
-				
-				String[] rank = new String[2];
-				for(int p=0; p<num-1; p++)
-					for(int i=0; i<num-(1+p); i++) {
-						int player1 = Integer.parseInt(players[i][n+1]);
-						int player2 =Integer.parseInt(players[i+1][n+1]);
-						
-						if( player1<player2 ) {
-							
-							rank[0] = players[i][0];
-							players[i][0] = players[i+1][0];
-							players[i+1][0] = rank[0];
-							
-							rank[1] = players[i][n+1];
-							players[i][n+1] = players[i+1][n+1];
-							players[i+1][n+1] = rank[1];
-							
-						}
-					}
-				
-				for(int p=0, i=1; p<num; p++, i++)
-					System.out.printf("\n\n\n%d등 : %s\n", i, players[p][0]);
-			}
-				
-				
+			players = dar.scoreCalculate(players);
 			
 //		--- 게임 반복 여부 ---------------------------
 			isRun = dar.repeatGame();
