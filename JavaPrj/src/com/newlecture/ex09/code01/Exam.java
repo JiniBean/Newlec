@@ -5,4 +5,6 @@ public class Exam {
 	int kor;
 	int math;
 	int eng;
+	int total;
+	double avg;
 }

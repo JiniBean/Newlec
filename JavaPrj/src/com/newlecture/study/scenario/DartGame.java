@@ -32,20 +32,20 @@ public class DartGame {
 					System.out.println("      R1       R2       R3 ");
 					
 					for(int p=0 ; p<num; p++) {
-						if(i==0) {
+						if(==0&& p>0) {
 							System.out.println("   ┌───────┐┌───────┐┌───────┐");
-							System.out.printf("   │  %s  ││      ││      │\n", players[k][1]);
+							System.out.printf("   │   %s  ││       ││       │\n", players[p][1]);
 							System.out.println("   └───────┘└───────┘└───────┘\n");
 						}
 						
 						else if(i==1) {
 							System.out.println("   ┌───────┐┌───────┐┌───────┐");
-							System.out.printf("   │  %s  ││  %s  ││      │\n", players[k][1], players[k][2]);
+							System.out.printf("   │   %s  ││   %s  ││       │\n", players[p][1], players[p][2]);
 							System.out.println("   └───────┘└───────┘└───────┘\n");
 						}
-						else {
-							System.out.println("   ┌──────┐┌──────┐┌──────┐");
-							System.out.printf("   │  %s  ││  %s  ││  %s  │\n", players[k][1], players[k][2], players[k][3]);
+						else if(i==2){
+							System.out.println("   ┌───────┐┌───────┐┌───────┐");
+							System.out.printf("   │   %s  ││   %s  ││   %s  │\n", players[p][1], players[p][2], players[p][3]);
 							System.out.printf("   └───────┘└───────┘└───────┘\n");
 						}
 							
