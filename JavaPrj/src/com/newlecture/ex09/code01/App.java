@@ -94,7 +94,7 @@ public class App {
 			System.out.println("영어 점수를 입력해주세요");
 			exam.eng = sc.nextInt();
 			
-			exams[count] = exam;
+			exams[count++] = exam;
 		}
 //		---------------------------------------------------------------------
 		// 성적 결산하기
@@ -104,7 +104,7 @@ public class App {
 		int total = 0;
 		double avgAdd= 0;
 		
-		for(int i=0; i<count+1; i++) {
+		for(int i=0; i<count; i++) {
 			exams[i].total = exams[i].kor+ exams[i].math + exams[i].eng;
 			exams[i].avg = (double)exams[i].total/3.0;
 			korSum += exams[i].kor;
@@ -115,15 +115,15 @@ public class App {
 		}
 		
 		// 과목별 합계 평균
-		int korAvg = korSum/count+1;
-		int mathAvg = mathSum/count+1;
-		int engAvg = engSum/count+1;
-		double avgAvg = avgAdd/( (double)count+1);
+		int korAvg = korSum/count;
+		int mathAvg = mathSum/count;
+		int engAvg = engSum/count;
+		double avgAvg = avgAdd/( (double)count);
 		
 //		-----------------------------------------------------------------
 		//정렬하기
-		for(int i=0; i<count; i++)
-			for(int j=0; j<count-i; j++)
+		for(int i=0; i<count-1; i++)
+			for(int j=0; j<count-(1+i); j++)
 				if(exams[j].kor < exams[j+1].kor){
 					Exam temp;
 					temp = exams[j];
@@ -136,11 +136,11 @@ public class App {
 		
 		{
 			//학생별 성적 출력
-			for(int i=0; i<count+1; i++)
+			for(int i=0; i<count; i++)
 				System.out.printf("\nname = %s, kor = %d, math = %d, eng = %d, total = %d, avg = %.2f\n", exams[i].name, exams[i].kor, exams[i].math, exams[i].eng, exams[i].total, exams[i].avg);
 			
 			// 총 결산 출력
-			System.out.printf("\n인원수 : %d, 국어 : %d/%d, 수학 : %d/%d, 영어 : %d/%d, 총합 : %d, 총 평균 : %.1f", count+1, korSum, korAvg, mathSum, mathAvg, engSum, engAvg, total, avgAvg);
+			System.out.printf("\n인원수 : %d, 국어 : %d/%d, 수학 : %d/%d, 영어 : %d/%d, 총합 : %d, 총 평균 : %.1f", count, korSum, korAvg, mathSum, mathAvg, engSum, engAvg, total, avgAvg);
 		}
 	}
 }

@@ -17,63 +17,89 @@ public class MarketSell {
 		String loadCost = "판매가 : ";
 		String loadStock = "재고 수량 : ";
 		
-//		--- 데이터 입력 -----------------
+//		--- 데이터 입력 및 저장-----------------
+			
 		{
 			Scanner scan = new Scanner(System.in);
 			
 			System.out.println("등록할 상품의 갯수를 입력해주세요");
 			int num = scan.nextInt();
 			scan.nextLine();
-			Product temp = new Product();
+			
+			Product[] product = new Product[num];
 			
 			for(int i=0; i<num; i++) {
+				Product temp = new Product();
+				
 				System.out.print(loadCategory);
 				temp.category = scan.nextLine();
 				
 				System.out.print(loadType);
 				temp.type = scan.nextLine();
 				
-				
 				System.out.print(loadName);
 				temp.name = scan.nextLine();
-				
-				System.out.print(loadCost);
-				temp.cost = Integer.parseInt(scan.nextLine());
-				
-				if(temp.cost < 100 || 100_000 < temp.cost) {
+
+				boolean IsRun = true;
+				while(IsRun) {
+					int n;
+					try {
+						System.out.print(loadCost);
+						n= Integer.parseInt(scan.nextLine());
+					} catch (Exception e) {
+						System.out.println("정수만 입력헤주세요. (금액 범위 : 100~100,000)\n");
+						n = -1;
+						continue;
+					}
 					
-					System.out.println("금액 범위를 벗어났습니다. (금액 범위 : 100원~100,000원)");
-					temp.cost = Integer.parseInt(scan.nextLine());
+					if(n < 100 || 10_000 < n) {
+						System.out.println("금액 범위를 벗어났습니다. (금액 범위 : 100원~100,000원)");
+						continue;
+					}
+					
+					temp.cost = String.valueOf(n);
+					IsRun = false;
 				}
 				
-				System.out.print(loadStock);
-				temp.stock = Integer.parseInt(scan.nextLine());
-				
-				if(temp.stock < 0 || 1_000 < temp.stock) {
+				IsRun = true;
+				while(IsRun) {
+					int n;
+					try {
+						System.out.print(loadStock);
+						n = Integer.parseInt(scan.nextLine());
+					} catch (Exception e) {
+						System.out.println("0 이상의 정수만 입력헤주세요\n");
+						n = -1;
+						continue;
+					}
 					
-					System.out.println("재고 수량 범위를 벗어났습니다. (재고 수량 범위 : 0개~1,000개)");
-					temp.stock = Integer.parseInt(scan.nextLine());
-				} 
+					if(n < 0 || 1_000 < n) {
+						
+						System.out.println("재고 수량 범위를 벗어났습니다. (재고 수량 범위 : 0개~1,000개)");
+						continue;
+					} 
+					
+					if(n>0)
+						IsRun = false;
+					temp.stock = String.valueOf(n);
+					}
+					
+				product[i] = temp;
+				}
 				
-				PrintStream fout = new PrintStream("res/market.txt");
-				fout.printf("%s %s %s %d %d",temp.category, temp.type, temp.name, temp.cost, temp.stock);
-				fout.println("");
+			PrintStream fout = new PrintStream("res/market.txt");
+			for(int i=0; i<num; i++) {
+				fout.printf("%s,%s,%s,%s,%s",product[i].category, product[i].type, product[i].name, product[i].cost, product[i].stock);
+				fout.println();
 			}
 		}
 		
-		System.out.println();
-		
-		
-		
-//		--- 데이터 저장 ----------------
-		{
-			
-		}
 		
 		
 //		--- 데이터 로드 ----------------
 		int count = 0;
 		{
+			
 			FileInputStream fis = new FileInputStream("res/market.txt");
 			Scanner fscan = new Scanner(fis);
 			
@@ -86,18 +112,22 @@ public class MarketSell {
 		}
 		
 		{
-			Product[] product =  new Product[count];
-			Product temp = new Product();
-			
 			FileInputStream fis = new FileInputStream("res/market.txt");
 			Scanner fscan = new Scanner(fis);
 			
+			Product[] product =  new Product[count];
+			Product temp = new Product();
+			
+			
 			for(int i=0; i<count; i++) {
-				temp.category = fscan.next();
-				temp.type = fscan.next();
-				temp.name = fscan.next();
-				temp.cost = fscan.nextInt();
-				temp.stock = fscan.nextInt();
+				String line = fscan.nextLine();
+				String[] tokens = line.split(",");
+				
+				temp.category = tokens[0];
+				temp.type = tokens[1];
+				temp.name = tokens[2];
+				temp.cost = tokens[3];
+				temp.stock = tokens[4];
 				product[i] = temp;
 			}
 			
