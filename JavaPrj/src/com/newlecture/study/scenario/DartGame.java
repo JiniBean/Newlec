@@ -22,7 +22,7 @@ public class DartGame {
 		while(isRun) {
 			
 			//게임 세팅 
-			 SettingInfo info = dart.setGame();
+			SettingInfo info = dart.setGame();
 			System.out.println(info.numPlayers);
 			System.out.println(info.numRound);
 			

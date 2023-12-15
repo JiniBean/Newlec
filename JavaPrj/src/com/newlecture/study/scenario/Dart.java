@@ -308,26 +308,61 @@ public class Dart {
 		
 		System.out.println("기록을 등재하고 싶은 유저의 번호을 모두 적어주세요(번호 구분은 스페이스가 기준입니다.");
 		
+		//유저 번호 제시
 		boolean isRun = true;
+		
 		while(isRun) {
 			for(int i=0; i<info.numPlayers; i++)
 				System.out.printf("%d. %s\n", i+1, info.players[i].name);
-			System.out.printf("%d. ALL", info.numPlayers+1);
 			
-			String line = scan.nextLine();
+			System.out.printf("%d. ALL", info.numPlayers+1); // 모든 유저가 저장한대요
 			
-			boolean isNum = !Character.isDigit(line.charAt(0));//입력값이 숫자가 아닐때
+			String line = scan.nextLine(); 
 			
-			if(isNum) {
-				System.out.println("잘못 입력하셨습니다! 다시 던져주세요! (1부터 20의 정수만 입력해주세요) \n");
-				continue;
+			//유효성 검사
+			boolean isNot = false;
+			
+			for(int i=0; i<line.length(); i++) {
+				if(!Character.isDigit(line.charAt(i) ) ){
+					System.out.println("잘못 입력하셨습니다! 숫자만 입력해주세요 \n");
+					continue;
+				}
 			}
+			
 			String[] tokens = line.split(" ");
 			
+			
+			
+			for(int i=0; i<tokens.length; i++) {
+				int n = Integer.parseInt(tokens[i]);
+				if(!(0 < n && n < info.numPlayers+1) )
+					isNot = true;
+			}
+			
+			if(isNot) {
+				System.out.printf("잘못 입력하셨습니다! %d부터 %d 중에서 입력해주세요\n\n", 1, info.numPlayers+1 );
+				continue;
+			}
+			
+			//All인지 확인
+			boolean isAll = false;
+			for(int i=0; i<tokens.length; i++)
+				if(info.numPlayers+1 == Integer.parseInt(tokens[i]) )
+					isAll= true;
+			
+			if(isAll) 
+				for(int i=0; i<info.numPlayers; i++) {
+					fout.printf("%s,%d,%d,%d,%d", info.players[i].name, info.players[i].firstScore, info.players[i].secondScore, info.players[i].tirdScore, info.players[i].totalScore);
+					fout.println();
+				}
+			
+			for(int i=0; i<tokens.length; i++)
+				
+				
 			isRun = false;
 		}
 		
-		for(int i=0; i; i++) {
+		for(int i=0; i<; i++) {
 			System.out.printf("%s님이 명예의 전당에 등재되었습니다.", "은진");
 			
 		}
