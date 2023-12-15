@@ -75,49 +75,56 @@ public class Dart {
 		Thread.sleep(1000);
 	}
 	
-
-	public DartPlayer[] setting() {
+	//게임 세팅하기
+	public SettingInfo setGame() {
+		SettingInfo info =  new SettingInfo();
 		
-		int str = 0;
-		int num = 0;
+		info.numRound = 3; //게임을 3라운드 진행
+		
+		String str;
 		Scanner sc = new Scanner(System.in);
 		
 		boolean run = true;
 		
+		//플레이어 수 입력받기
 		while(run) {
 			
 			System.out.println("플레이어 수를 정해주세요");
 			System.out.print(">>");
 			
-			try {
-				str = Integer.parseInt(sc.nextLine());
-			} catch (Exception e) {
+			//유효성검사
+			str =sc.nextLine();
+			
+			if( !('0' < str.charAt(0) && str.charAt(0) <='9') ) {
 				System.out.println("0 이상의 정수만 입력헤주세요\n");
-				str = -1;
-			}
-			if(str>0)
-				run = false;
-			num = str;
+				continue;
 			}
 			
-		DartPlayer[] players = new DartPlayer[num];
+			info.numPlayers = Integer.parseInt(str);
+			run = false;
+			}
 			
-		for(int i=0; i<num; i++) {
+		info.players = new DartPlayer[info.numPlayers];
+		
+		//입력 받은 수만큼 유저이름 받기
+		for(int i=0; i<info.numPlayers; i++) {
 			DartPlayer temp = new DartPlayer();
 			System.out.printf("\n유저%d의 이름을 정해주세요.\n", i+1);
 			System.out.print(">>");
 			temp.name = sc.nextLine();
-			players[i] = temp;
+			info.players[i] = temp;
 			System.out.println();
 		}
 	
-		return players;
+		return info;
 	}
 	
+	//다트 던지기
 	public int throwDart() {
 		
+		String str;
 		int target = 0;
-		int str = 0;
+		int temp = 0;
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -127,25 +134,29 @@ public class Dart {
 			System.out.println("타겟을 향해 던지세요! (던지고 싶은 타겟의 숫자를 입력해주세요)\n");
 			System.out.print(">>");
 			
-			try {
-				str = Integer.parseInt(sc.nextLine());
-
-			} catch (Exception e) {
-				target = -1;
-			}
-			
-			target = str;
-			
 			//유효성 검사
-			if( !(1 <= target && target <=20) ) {
-				System.out.println("잘못 입력하셨습니다! 다시 던져주세요!\n");
-				
+			str =sc.nextLine();
+			
+			boolean isNum = !Character.isDigit(str.charAt(0));//입력값이 숫자가 아닐때
+			
+			if(isNum) {
+				System.out.println("잘못 입력하셨습니다! 다시 던져주세요! (1부터 20의 정수만 입력해주세요) \n");
 				continue;
 			}
 			
+			temp = Integer.parseInt(str);
+			
+			boolean isRightTarget = !(1<=temp && temp <=20);//1~20이 아닐때
+			if(isRightTarget) {
+				System.out.println("잘못 입력하셨습니다! 다시 던져주세요! (1부터 20의 정수만 입력해주세요) \n");
+				continue;
+			}
+			
+			target = temp;
 			run=false;
-		}		
-		System.out.println("\n\n");
+		}
+		System.out.println();
+		System.out.println();
 		return target;
 	}
 	
@@ -188,11 +199,11 @@ public class Dart {
 		return score;
 	}
 	
-	
+	//다트가 어디에 맞았니?
 	public int scoreCheck(int target) {
-		
+		//1~100까지의 난수 : 각 타겟 존에 맞을 확률
 		Random ran = new Random();
-		int per = ran.nextInt(100)+1;
+		int per = ran.nextInt(100)+1; 
 		
 		int perHitTriple=40;
 		int perHitDouble=40;
@@ -210,6 +221,7 @@ public class Dart {
 		else if(target>10) 
 			perHitDouble /=2;
 		
+		//1~100까지 트리플, 더블, 싱글, 미스존 범위 나누기
 		x=100-perHitTriple;
 		y=(x-1)-perHitDouble;
 		z=(y-1)-perHitSingle;
@@ -227,45 +239,46 @@ public class Dart {
 				
 	}
 	
-	public DartPlayer[] scoreCalculate(DartPlayer[] players) {
-		int num = players.length;
+	//총점수 및 등수 출력
+	public SettingInfo scoreCalculate(SettingInfo info) {
 		
-		for(int p=0; p<num; p++)
-			System.out.printf("%s : %s점  \n\n", players[p].name, players[p].totalScore);
+		for(int p=0; p<info.numPlayers; p++)
+			System.out.printf("%s : %s점  \n\n", info.players[p].name, info.players[p].totalScore);
 		
-		if(num==2) {
+		if(info.numPlayers==2) {
 			
-			boolean same = players[0].totalScore==players[1].totalScore;
-			boolean whoWin = players[0].totalScore>players[1].totalScore;
+			boolean same = info.players[0].totalScore==info.players[1].totalScore;
+			boolean whoWin = info.players[0].totalScore>info.players[1].totalScore;
 		
 			if(same)
 				System.out.println("MATCH Tied!");
 			else
-				System.out.printf(whoWin? "\n\n%s WIN!" : "\n\n%s WIN!" , players[0].name, players[1].name);
+				System.out.printf(whoWin? "\n\n%s WIN!" : "\n\n%s WIN!" , info.players[0].name, info.players[1].name);
 		}
-		else if(num>2) {
+		else if(info.numPlayers>2) {
 			
 			DartPlayer rank;
 			
-			for(int p=0; p<num-1; p++)
-				for(int i=0; i<num-(1+p); i++) {
+			for(int p=0; p<info.numPlayers-1; p++)
+				for(int i=0; i<info.numPlayers-(1+p); i++) {
 					
-					int player1 = players[i].totalScore;
-					int player2 = players[i+1].totalScore;
+					int player1 = info.players[i].totalScore;
+					int player2 = info.players[i+1].totalScore;
 					
 					if( player1 < player2 ) {
-						rank = players[i];
-						players[i] = players[i+1];
-						players[i+1] = rank;
+						rank = info.players[i];
+						info.players[i] = info.players[i+1];
+						info.players[i+1] = rank;
 					}
 				}
 			
-			for(int p=0, i=1; p<num; p++, i++)
-				System.out.printf("\n%d등 : %s\n", i, players[p].name);
+			for(int p=0, i=1; p<info.numPlayers; p++, i++)
+				System.out.printf("\n%d등 : %s\n", i, info.players[p].name);
 		}
-		return players;
+		return info;
 	}
 	
+	//반복 여부
 	public boolean repeatGame() {
 		boolean isRun = true;
 		Scanner scan = new Scanner(System.in);
@@ -278,32 +291,50 @@ public class Dart {
 		if(refuse.equals("1"))
 			isRun = false;
 		
-		System.out.println("게임이 종료되었습니다.");
-		
 		return isRun;
 	}
 	
-	public String loadToHall(DartPlayer[] players ) throws IOException {
+	//기록 저장 여부
+	public String loadToHall(SettingInfo info) throws IOException {
 		FileOutputStream fos = new FileOutputStream("res/HallOfFame.txt", true);
 		PrintStream fout = new PrintStream(fos);
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("명예의 전당에 올리시겠습니까? (원하지 않는다면 1을 기록을 저장하시려면 아무 키나 눌러주세요");
-		String saveScore = scan.nextLine();
+		String temp = scan.nextLine();
 		
-		if(saveScore.equals("1"))
-			return saveScore;
+		if(temp.equals("1"))
+			return temp; //메인 메소드로 돌아감
 		
-		System.out.println("기록을 등재하고 싶은 유저의 번호나 이름을 적어주세요(");
-		for(int i=0; i<players.length; i++)
-			System.out.printf("%d. %s", i, players[i].name);
+		System.out.println("기록을 등재하고 싶은 유저의 번호을 모두 적어주세요(번호 구분은 스페이스가 기준입니다.");
 		
-		scan.nextLine();
-		System.out.printf("%s님이 명예의 전당에 등재되었습니다.", "은진");
+		boolean isRun = true;
+		while(isRun) {
+			for(int i=0; i<info.numPlayers; i++)
+				System.out.printf("%d. %s\n", i+1, info.players[i].name);
+			System.out.printf("%d. ALL", info.numPlayers+1);
+			
+			String line = scan.nextLine();
+			
+			boolean isNum = !Character.isDigit(line.charAt(0));//입력값이 숫자가 아닐때
+			
+			if(isNum) {
+				System.out.println("잘못 입력하셨습니다! 다시 던져주세요! (1부터 20의 정수만 입력해주세요) \n");
+				continue;
+			}
+			String[] tokens = line.split(" ");
+			
+			isRun = false;
+		}
+		
+		for(int i=0; i; i++) {
+			System.out.printf("%s님이 명예의 전당에 등재되었습니다.", "은진");
+			
+		}
 		
 		fout.close();
 		fos.close();
-		return saveScore;
+		return temp;
 
 	}
 }
