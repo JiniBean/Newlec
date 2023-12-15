@@ -12,7 +12,7 @@ public class APP {
 		String middle1 = "├";
 		String middle2 = "┼";
 		String middle3 = "┤";
-				
+				    
 		String douwn1 = "└";
 		String douwn2 = "┴";
 		String douwn3 = "┘";
