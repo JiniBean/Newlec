@@ -1,5 +1,6 @@
 package com.newlecture.ex12.oop;
 
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -9,6 +10,12 @@ public class Board {
 	int WIDTH;
 	int HEIGHT;
 
+	public Board() {
+		this.WIDTH = 20;
+		this.HEIGHT = 10;
+		this.buf = new String[this.HEIGHT][this.WIDTH];
+	}
+	
 	public void pirnt() {
 		for(int y=0; y<this.HEIGHT; y++) {
 			for(int x=0; x<this.WIDTH; x++) 
@@ -58,11 +65,11 @@ public class Board {
 	}
 	
 	
-	public void putStone() {
+	public Board putStone(int count) {
 		int x, y;
 		String player1 = "●";
 		String player2 = "○";
-		Board returnis;
+		Board returnis = new Board();
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -89,23 +96,22 @@ public class Board {
 		}
 		if( !(0<=y && y<this.HEIGHT) ) {
 			System.out.printf("잘못 입력하셨습니다. 1부터 %d까지의 정수를 입력해주세요\n", this.HEIGHT);
-			returnis = new Board();
 			returnis.HEIGHT=1;
 			return returnis;
 		}
 		
 		if(this.buf[y][x] == player1 || this.buf[y][x] == player2) {
 			System.out.println("이미 오목돌이 있습니다. 다시 입력해주세요\n");
-			returnis = new Board();
 			returnis.HEIGHT=1;
 			return returnis;
 		}
 		
 		this.buf[y][x] = count%2 == 0? player1 : player2;
+		return returnis;
 	}
 	
 	
-	public void save() {
+	public void save(boolean run) throws FileNotFoundException {
 		Scanner scan = new Scanner(System.in);
 		PrintStream pis = new PrintStream("res/omok.txt/");
 		
@@ -125,11 +131,9 @@ public class Board {
 		
 	}
 	
-	public static Board make() {
-		Board board = new Board();
-		board.WIDTH = 20;
-		board.HEIGHT = 10;
-		board.buf = new String[board.HEIGHT][board.WIDTH];
-		return board;
-	}
+//	public static Board make() {
+//		
+//		return board;
+//	}
+
 }

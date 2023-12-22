@@ -12,9 +12,6 @@ public class ExamBufApp {
 			FileInputStream fis = new FileInputStream("res/ex08.csv");
 			Scanner fscan = new Scanner(fis);
 			
-			if(fscan.hasNextLine())
-				fscan.nextLine();
-			
 			//반복해서 개수 알기
 			while(fscan.hasNextLine()) {
 				count++;
