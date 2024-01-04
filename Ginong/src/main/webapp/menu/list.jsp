@@ -51,7 +51,7 @@
         <% Product menu = list.get(i); %>
             <section>
             	<img alt="" src="">
-                <h1><a href="detail.jsp?id=<%= i+1 %>"><%= menu.getKorNm() %>, <%= menu.getQuantity() %>개입</a></h1>
+                <h1><a href="detail.jsp?id=<%= i+1 %>"><%= menu.getKorNm() %> (<%= menu.getQuantity() %>개입)</a></h1>
                 <div><%= menu.getEngNm() %></div>
                 <div><%= menu.getPrice() %>원</div>
             </section>
