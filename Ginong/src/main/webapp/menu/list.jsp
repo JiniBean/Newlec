@@ -23,8 +23,8 @@
 <body>
  <header>
         <h1>기농이네</h1>
-        <span><a href="">로그인</a></span>
-        <span><a href="">장바구니</a></span>
+        <div><a href="">로그인</a></div>
+        <div><a href="">장바구니</a></div>
 
     </header>
 
