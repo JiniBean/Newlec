@@ -31,22 +31,22 @@
     <main>
         <nav>
             <h1>메뉴</h1>
-            
-            <span><a href="">과채류</a></span>
-            <span><a href="">양념류</a></span>
-            <span><a href="">가공식품류</a></span>
-            <span><a href="">공지사항</a></span>
-            <span><a href="">고객센터</a></span>
+            <ul>
+	            <li><a href="">과채류</a></li>
+	            <li><a href="">양념류</a></li>
+	            <li><a href="">가공식품류</a></li>
+	            <li><a href="">공지사항</a></li>
+	            <li><a href="">고객센터</a></li>
+            </ul>
         </nav>
 
         <form action="#">
             <div>
                 <input type="search" name="q">
-                <button><img src="/RlandWeb/res/search.png"> </button>
+                <button><img src="/Ginong/res/search.png" width="28" height="28" > </button>
             </div>
         </form>
 
-       
         <%for(int i=0; i<size; i++) { %>
         <% Product menu = list.get(i); %>
             <section>
@@ -56,7 +56,6 @@
                 <div><%= menu.getPrice() %>원</div>
             </section>
                 <% } %>
- 
     </main>
 
     <footer>

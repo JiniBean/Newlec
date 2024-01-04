@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ProductRepository {
 	
-	private String dataSource = "E:\\Jinibean\\Ginong\\src\\main\\webapp\\res\\data.csv";
+	private String dataSource = "E:\\Ginong\\Newlec\\Ginong\\src\\main\\webapp\\res\\data.txt";
 	
 	public ProductList findAll() throws IOException {
 		
