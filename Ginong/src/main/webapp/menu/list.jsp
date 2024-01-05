@@ -30,7 +30,7 @@
 
     <main>
         <nav>
-            <h1>메뉴</h1>
+            <h1>카테고리 검색 메뉴</h1>
             <ul>
 	            <li><a href="">과채류</a></li>
 	            <li><a href="">양념류</a></li>
@@ -40,24 +40,26 @@
             </ul>
         </nav>
 
-        <form action="#">
-            <div>
-                <input type="search" name="q">
+        <section>
+            <h1>키워드 검색 폼</h1>
+            <form action="#">
+                <label for="search">상품명</label>
+                <input type="search" name="q" id="search">
                 <button><img src="/Ginong/res/search.png" width="28" height="28" > </button>
-            </div>
-        </form>
+            </form>
+        </section>
 
-        <%for(int i=0; i<size; i++) { %>
-        <% Product menu = list.get(i); %>
+        <%for(int i=0; i<size; i++) {
+             Product menu = list.get(i); %>
             <section>
-            	<img alt="" src="">
                 <h1><a href="detail.jsp?id=<%= i+1 %>"><%= menu.getKorNm() %> (<%= menu.getQuantity() %>개입)</a></h1>
+            	<div><img alt="" src=""></div>
                 <div><%= menu.getEngNm() %></div>
                 <div><%= menu.getPrice() %>원</div>
             </section>
-                <% } %>
-    </main>
+        <% } %>
 
+    </main>
     <footer>
         <div>홈페이지</div>
         <div>사업자 등록번호 : 123-45-67</div>
